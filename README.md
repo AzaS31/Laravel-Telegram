@@ -1,29 +1,30 @@
-# Telegram Bot на Laravel
+# Telegram Bot with Laravel
 
-Проект реализует регистрацию пользователей с отправкой уведомлений через Email и Telegram. Создан в рамках курса GeekBrains для практики интеграции внешних сервисов, таких как Mailtrap и Telegram Bot API.
-
----
-
-## 📌 Функциональность
-
-- 🔐 **Регистрация и аутентификация** пользователей через Laravel.
-- 📧 **Email-уведомления**: приветственное письмо новым пользователям (через Mailtrap).
-- 🤖 **Telegram-уведомления**: сообщение в Telegram-канал о регистрации нового пользователя.
-- 🔍 **Тестовый маршрут** `/test-telegram` для проверки Telegram-уведомлений.
+This project implements user registration with notifications sent via Email and Telegram. It was built as part of a GeekBrains course to practice integrating external services such as Mailtrap and the Telegram Bot API.
 
 ---
 
-## 🛠 Технологии
+## 📌 Features
 
-- **Backend**: PHP, Laravel
-- **Внешние сервисы**:
-  - Telegram Bot API (`irazasyed/telegram-bot-sdk`)
-  - Mailtrap (SMTP для тестирования почты)
-- **Инструменты**: Composer, Git
+* 🔐 **User registration and authentication** via Laravel
+* 📧 **Email notifications**: welcome email to newly registered users (via Mailtrap)
+* 🤖 **Telegram notifications**: message sent to a Telegram channel upon user registration
+* 🔍 **Test route** `/test-telegram` to verify Telegram integration
 
 ---
 
-## Скриншоты
+## 🛠 Technologies
+
+* **Backend**: PHP, Laravel
+* **External services**:
+
+  * Telegram Bot API (`irazasyed/telegram-bot-sdk`)
+  * Mailtrap (SMTP email testing)
+* **Tools**: Composer, Git
+
+---
+
+## Screenshots
 
 ![screen1](./screen1.png)
 ![screen2](./screen2.png)
@@ -31,59 +32,57 @@
 
 ---
 
-## 🚀 Установка и запуск
+## 🚀 Installation & Setup
 
-### 1. Клонируйте репозиторий
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/AzaS31/Laravel-Telegram.git
 cd Laravel-Telegram
 ```
 
-### 2. Установите зависимости
+### 2. Install Dependencies
 
 ```bash
 composer install
 ```
 
-### 3. Настройте файл окружения
+### 3. Configure Environment Variables
 
 ```bash
 cp .env.example .env
 ```
 
-Затем отредактируйте `.env`, указав данные Mailtrap и Telegram-бота:
+Then edit the `.env` file and provide your Mailtrap and Telegram credentials:
 
 ```env
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.mailtrap.io
 MAIL_PORT=2525
-MAIL_USERNAME=ваш-username-mailtrap
-MAIL_PASSWORD=ваш-пароль-mailtrap
-MAIL_FROM_ADDRESS=ваш-email@example.com
+MAIL_USERNAME=your-mailtrap-username
+MAIL_PASSWORD=your-mailtrap-password
+MAIL_FROM_ADDRESS=your-email@example.com
 MAIL_FROM_NAME="${APP_NAME}"
 
-TELEGRAM_CHANNEL_ID=ваш-id-канала-telegram
-TELEGRAM_BOT_TOKEN=ваш-токен-бота
+TELEGRAM_CHANNEL_ID=your-telegram-channel-id
+TELEGRAM_BOT_TOKEN=your-telegram-bot-token
 ```
 
-### 4. Сгенерируйте ключ приложения
+### 4. Generate Application Key
 
 ```bash
 php artisan key:generate
 ```
 
-### 5. Настройте базу данных
+### 5. Configure Database
 
-Укажите параметры подключения к базе данных в `.env` (MySQL, SQLite и т.д.).
-
-Затем выполните миграции:
+Set your database connection in `.env` (MySQL, SQLite, etc.), then run migrations:
 
 ```bash
 php artisan migrate
 ```
 
-### 6. Запустите приложение
+### 6. Run the Application
 
 ```bash
 php artisan serve
@@ -91,62 +90,61 @@ php artisan serve
 
 ---
 
-## ✅ Проверка функциональности
+## ✅ Functionality Check
 
 ### Telegram
 
-Перейдите по адресу:
+Go to:
 
 ```
 http://localhost:8000/test-telegram
 ```
 
-> Убедитесь, что сообщение появилось в вашем Telegram-канале.
+> Make sure the message appears in your Telegram channel.
 
 ### Email
 
-- Зарегистрируйте нового пользователя.
-- Проверьте входящие письма в Mailtrap.
+* Register a new user
+* Check Mailtrap inbox for the welcome email
 
 ---
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
-| Компонент | Описание |
-|----------|----------|
-| `RegisteredUserController` | Обработка регистрации и отправка уведомлений |
-| `App\Mail\Welcome.php` | Класс приветственного письма |
-| `resources/views/emails/welcome.blade.php` | HTML-шаблон письма |
-| `routes/web.php` | Включает маршрут `/test-telegram` |
-
----
-
-## 🎯 Цели проекта
-
-- Изучить отправку email-уведомлений через SMTP (Mailtrap)
-- Освоить интеграцию с Telegram через Telegram Bot API
-- Реализовать регистрацию и аутентификацию в Laravel
-- Настроить безопасное хранение конфиденциальных данных
+| Component                                  | Description                                 |
+| ------------------------------------------ | ------------------------------------------- |
+| `RegisteredUserController`                 | Handles registration and notification logic |
+| `App\Mail\Welcome.php`                     | Mail class for the welcome email            |
+| `resources/views/emails/welcome.blade.php` | HTML template for the welcome email         |
+| `routes/web.php`                           | Contains the `/test-telegram` route         |
 
 ---
 
-## ⚠️ Примечания
+## 🎯 Project Goals
 
-- Убедитесь, что Telegram-бот **добавлен в канал** и имеет права **на отправку сообщений**.
-- Mailtrap используется **только для разработки** — не отправляет письма настоящим пользователям.
-- Проект предназначен **для локальной разработки и тестирования**.
+* Learn email notification setup via SMTP (Mailtrap)
+* Master integration with Telegram using the Bot API
+* Implement registration and authentication in Laravel
+* Set up secure handling of sensitive credentials
 
 ---
 
-## 🧑‍💻 Автор
+## ⚠️ Notes
 
-**Azamat S.**  
+* Ensure your Telegram bot **is added to the channel** and has permission to **send messages**
+* Mailtrap is used **only for development** and does not deliver to real inboxes
+* This project is meant for **local development and testing** purposes
+
+---
+
+## 🧑‍💻 Author
+
+**Azamat S.**
 [GitHub: @AzaS31](https://github.com/AzaS31)
 
 ---
 
-## 📜 Лицензия
+## 📜 License
 
-Проект доступен под лицензией MIT.
-
+This project is licensed under the **MIT License**.
 
